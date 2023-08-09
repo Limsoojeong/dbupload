@@ -13,14 +13,14 @@ input_dim = 129
 output_dim = 2
 max_seq = 256
 
-connect = pymysql.connect(host='182.162.109.227', user='root',
-password='number1rhddbqnstjr!', port=33306, db='feed_info', charset='utf8')
+connect = pymysql.connect(host='', user='root',
+password='', port=, db='feed_info', charset='utf8')
 
 class batch_predict:
 
     def __init__(self, input_dim, output_dim):
         print("load_model")
-        self.model = load_model("weights-05-0.9984.hdf5")
+        self.model = load_model("weight4.hdf5")
         self.max_wait_time = 0.001
         self.batch_size = 16
         self.input_dim = input_dim
@@ -87,7 +87,7 @@ class batch_predict:
             return 
 
 cur = connect.cursor(pymysql.cursors.DictCursor)
-sql = "select idx, path, request_header, request_body from waf_detect_log_1911"
+sql = "select idx, path, request_header, request_body from wa"
 cur.execute(sql)
 connect.commit()
 rows = cur.fetchall()
